@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>NYOT | Group</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="index.html" class="back">← Kembali</a>
+
+<div class="group-page" id="groupProfile"></div>
+
+<script src="group.js"></script>
+<script>
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+const container = document.getElementById("groupProfile");
+
+// SAFETY CHECK
+if (!id || !groups[id]) {
+    container.innerHTML = `<p>Group tidak ditemukan.</p>`;
+} else {
+    const data = groups[id];
+
+    container.innerHTML = `
+        <div class="group-photos">
+            ${data.foto.map(img => `<img src="${img}" alt="NYOT Group Photo">`).join("")}
+        </div>
+    `;
+}
+</script>
+
+</body>
+</html>

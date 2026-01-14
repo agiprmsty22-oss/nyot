@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>NYOT | Sirkel SMA</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== HERO / FOTO BARENG ===== -->
+<section class="hero">
+    <h1>NYOT</h1>
+    <p>Satwa Liar Semua</p>
+
+    <!-- FOTO GRUP (SCROLLBAR ONLY) -->
+    <div class="group-slider" id="groupSlider">
+        <a href="group.html?id=1" class="group-card">
+            <img src="images/group1.jpeg">
+        </a>
+        <a href="group.html?id=2" class="group-card">
+            <img src="images/group2.jpeg">
+        </a>
+        <a href="group.html?id=3" class="group-card">
+            <img src="images/group3.jpeg">
+        </a>
+        <a href="group.html?id=4" class="group-card">
+            <img src="images/group4.jpeg">
+        </a>
+        <a href="group.html?id=5" class="group-card">
+            <img src="images/group5.jpeg">
+        </a>
+        <a href="group.html?id=6" class="group-card">
+            <img src="images/group6.jpeg">
+        </a>
+        <a href="group.html?id=7" class="group-card">
+            <img src="images/group7.jpeg">
+        </a>
+    </div>
+
+    <!-- BAR INDIKATOR (VISUAL ONLY) -->
+    <div class="slider-indicator">
+        <div class="slider-thumb" id="sliderThumb"></div>
+    </div>
+</section>
+
+<!-- ===== MEMBER SECTION ===== -->
+<section class="members">
+    <h2>Members</h2>
+    <div class="gallery" id="gallery"></div>
+</section>
+
+<script src="data.js"></script>
+
+<!-- RENDER MEMBER -->
+<script>
+const gallery = document.getElementById("gallery");
+
+for (let id in members) {
+    gallery.innerHTML += `
+        <a href="profile.html?id=${id}" class="card">
+            <img src="${members[id].foto}" alt="${members[id].nama}">
+            <h3>${members[id].nama}</h3>
+        </a>
+    `;
+}
+</script>
+
+<!-- UPDATE SLIDER INDICATOR -->
+<script>
+const slider = document.getElementById("groupSlider");
+const thumb = document.getElementById("sliderThumb");
+
+slider.addEventListener("scroll", () => {
+    const maxScroll = slider.scrollWidth - slider.clientWidth;
+    const percent = slider.scrollLeft / maxScroll;
+    thumb.style.left = percent * 200 + "px";
+});
+</script>
+
+</body>
+</html>
